@@ -1,0 +1,132 @@
+@import url("fonts.css");
+/*
+  Shared visual system
+  The HTML keeps Tailwind utility classes for structure; this layer adds
+  the polished surface, motion, responsive behavior and reusable states.
+*/
+:root {
+  --ink: #101b33;
+  --slate: #53627d;
+  --fog: #f2f5f9;
+  --brass: #b9853d;
+  --line: rgba(16, 27, 51, .12);
+  --shadow: 0 20px 55px rgba(16, 27, 51, .10);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(185,133,61,.10), transparent 25rem),
+    linear-gradient(180deg, #fff 0%, #fbfcfe 100%);
+  color: var(--ink);
+}
+
+::selection { background: rgba(185,133,61,.24); color: var(--ink); }
+a, button, input { -webkit-tap-highlight-color: transparent; }
+a { transition: color .25s ease, background-color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+
+header {
+  border-color: var(--line) !important;
+  background: rgba(255,255,255,.78) !important;
+  box-shadow: 0 8px 28px rgba(16,27,51,.04);
+  animation: slideDown .7s cubic-bezier(.2,.8,.2,1) both;
+}
+header a[href="#courses"]:last-child {
+  border-radius: 999px;
+  box-shadow: 0 7px 18px rgba(16,27,51,.08);
+}
+header a[href="#courses"]:last-child:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(16,27,51,.16); }
+
+section { position: relative; }
+section > .max-w-6xl, footer > .max-w-6xl { position: relative; z-index: 1; }
+
+h1, h2, h3 { text-wrap: balance; }
+h1 { letter-spacing: -.035em; animation: rise .8s .08s both; }
+.hero, section:first-of-type { overflow: hidden; }
+section:first-of-type::before {
+  content: ""; position: absolute; width: 28rem; height: 28rem; border-radius: 50%;
+  right: -12rem; top: -12rem; background: rgba(185,133,61,.08); filter: blur(2px);
+  pointer-events: none;
+}
+
+.ledger-bg {
+  background-color: rgba(242,245,249,.66);
+  background-image:
+    linear-gradient(115deg, rgba(185,133,61,.05), transparent 35%),
+    repeating-linear-gradient(to bottom, rgba(16,27,51,.045), rgba(16,27,51,.045) 1px, transparent 1px, transparent 34px);
+}
+
+/* Cards and content blocks */
+article, .bg-white.border, form.bg-white, .bg-white.divide-y {
+  border-color: var(--line) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+}
+article {
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, background-color .35s ease;
+}
+article::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 3px; transform: scaleX(0); transform-origin: left;
+  background: linear-gradient(90deg, var(--brass), #e6c58f); transition: transform .35s ease;
+}
+article:hover { transform: translateY(-8px); box-shadow: var(--shadow); z-index: 2; }
+article:hover::after { transform: scaleX(1); }
+
+.aspect-video {
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 60px rgba(16,27,51,.18);
+  overflow: hidden;
+  position: relative;
+}
+.aspect-video::before {
+  content: "▶"; position: absolute; z-index: 0; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  width: 4.5rem; height: 4.5rem; border-radius: 50%; display: grid; place-items: center;
+  color: white; background: rgba(185,133,61,.88); box-shadow: 0 0 0 12px rgba(185,133,61,.15);
+  font-size: 1.25rem; padding-left: .2rem; pointer-events: none;
+}
+.aspect-video iframe { position: relative; z-index: 1; }
+
+button, input[type="file"] { transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease; }
+button:hover { transform: translateY(-2px); }
+input:focus { box-shadow: 0 0 0 4px rgba(185,133,61,.14); }
+
+footer { background: rgba(242,245,249,.7) !important; }
+footer a:hover { transform: translateX(3px); display: inline-block; }
+
+.tabular { font-variant-numeric: tabular-nums; direction: ltr; display: inline-block; }
+
+/* Dashboard surfaces */
+aside {
+  background: linear-gradient(160deg, #101b33, #182743) !important;
+  box-shadow: 12px 0 40px rgba(16,27,51,.12);
+}
+aside a { border-radius: .65rem; }
+aside a:hover { transform: translateX(3px); }
+main { animation: rise .75s .12s both; }
+
+/* Quiet stagger keeps the page feeling alive without distracting from reading. */
+section > .max-w-6xl > * { animation: rise .7s both; }
+section > .max-w-6xl > *:nth-child(2) { animation-delay: .08s; }
+section > .max-w-6xl > *:nth-child(3) { animation-delay: .16s; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 767px) {
+  header .max-w-6xl { height: 4.5rem; }
+  header nav { display: none; }
+  header a[href="#courses"]:last-child { padding: .65rem .9rem; font-size: .75rem; }
+  section:first-of-type { padding-top: 4.5rem !important; }
+  .aspect-video::before { width: 3.5rem; height: 3.5rem; }
+  aside { width: 100% !important; min-height: auto; }
+  .flex.min-h-screen { display: block; }
+  main { padding: 2rem 1.25rem !important; }
+  article:hover { transform: translateY(-4px); }
+  [class*="grid-cols-12"] { grid-template-columns: 1fr !important; gap: .45rem !important; }
+  [class*="grid-cols-12"] > [class*="col-span-"] { grid-column: 1 / -1 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
