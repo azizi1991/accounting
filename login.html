@@ -1,198 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحه ورود</title>
-    <!-- لود آیکون‌های FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ورود و ثبت‌نام | آکادمی دکتر اثنی‌عشری امیری</title>
+  
+  <!-- فونت‌های جذاب وزیرمتن و Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            background-color: #edebea;
-            font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
+  <!-- آیکون‌ها و استایل اصلی -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 
-        .container {
-            display: flex;
-            width: 100vw;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        /* بخش سمت چپ: تصویر پرتره */
-        .left-section {
-            flex: 1;
-            height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-        }
-
-        .left-section img {
-            max-height: 95vh;
-            max-width: 100%;
-            object-fit: contain;
-            object-position: left bottom;
-            display: block;
-        }
-
-        /* بخش سمت راست: لوگو، دکمه ورود و شبکه‌های اجتماعی */
-        .right-section {
-            flex: 1.2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            gap: 25px;
-        }
-
-        .logo-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-box img {
-            max-width: 280px;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-
-        /* استایل دکمه ورود */
-        .login-btn {
-            background: #e0e0e0;
-            color: #555;
-            text-decoration: none;
-            padding: 10px 48px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 500;
-            box-shadow: 3px 3px 6px #bebebe,
-                        -3px -3px 6px #ffffff;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-
-        .login-btn:hover {
-            box-shadow: inset 2px 2px 4px #bebebe,
-                        inset -2px -2px 4px #ffffff;
-            color: #222;
-        }
-
-        /* ردیف آیکون‌های شبکه‌های اجتماعی */
-        .social-icons {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-card {
-            width: 36px;
-            height: 36px;
-            background: #e6e6e6;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            text-decoration: none;
-            font-size: 16px;
-            box-shadow: 2px 2px 4px #c8c8c8,
-                        -2px -2px 4px #ffffff;
-            transition: all 0.2s ease;
-        }
-
-        .social-card:hover {
-            color: #000;
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 6px #b5b5b5,
-                        -3px -3px 6px #ffffff;
-        }
-
-        /* واکنش‌گرایی برای صفحات موبایل و تبلت */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column-reverse;
-                justify-content: center;
-                gap: 30px;
-                padding: 40px 15px;
-            }
-
-            .left-section {
-                height: auto;
-                justify-content: center;
-            }
-
-            .left-section img {
-                max-height: 45vh;
-            }
-        }
-    </style>
+  <style>
+    /* استایل اعلان خطا/موفقیت */
+    .auth-alert {
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .auth-alert.error {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+    .auth-alert.success {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- تصویر سمت چپ -->
-      
-        <div class="right-section">
-            <!-- تصویر / لوگوی خطاطی -->
-            <div class="logo-box">
-                <img src="12.jpg" alt="Logo">
-            </div>
+  <main class="auth-page">
+    
+    <!-- سمت راست: بنر تصویر و معرفی آکادمی -->
+    <section class="auth-hero">
+      <div class="auth-hero-bg"></div>
+      <div class="auth-hero-overlay"></div>
 
-            <!-- دکمه ورود -->
-            <a href="homepage_fa.html" class="login-btn">ورود</a>
-
-            <!-- آیکون‌های سوشال مدیا -->
-            <div class="social-icons">
-                <!-- وب‌سایت / تحلیل -->
-                <a href="https://dr-milad-accounting.ir" target="_blank" class="social-card" title="وبسایت">
-                    <i class="fa-solid fa-chart-simple"></i>
-                </a>
-                <!-- توییتر / X -->
-                <a href="https://x.com/dr_milad_accounting" target="_blank" class="social-card" title="X">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-                <!-- تلگرام -->
-                <a href="https://t.me/dr_milad_accounting" target="_blank" class="social-card" title="تلگرام">
-                    <i class="fa-brands fa-telegram"></i>
-                </a>
-                <!-- واتساپ -->
-                <a href="https://wa.me/dr_milad_accounting" target="_blank" class="social-card" title="واتساپ">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <!-- اینستاگرام -->
-                <a href="https://instagram.com/dr.milad.accounting" target="_blank" class="social-card" title="اینستاگرام">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <!-- لینکدین -->
-                <a href="https://linkedin.com/in/dr-milad-accounting" target="_blank" class="social-card" title="لینکدین">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
+      <div style="position: relative; z-index: 10;">
+        <div class="auth-card-header" style="justify-content: flex-start;">
+          <div class="auth-logo-box">
+            <img src="11.jpg" alt="دکتر میلاد اثنی عشری" class="auth-top-avatar" onerror="this.src='poster1.png'">
+            <div class="auth-logo-text">
+              <span class="sub" style="color: #ffffff; font-size: 1.1rem;">آکادمی دکتر اثنی‌عشری</span>
+              <p style="margin-top: 0.25rem; color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 300;">پژوهش، یادگیری، پیشرفت حرفه‌ای</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position: relative; z-index: 10; max-width: 440px;">
+        <p class="auth-category-tag">ACCOUNTING / RESEARCH / PRACTICE</p>
+        <h1 class="auth-hero-title">دانش خود را به یک مزیت حرفه‌ای تبدیل کنید.</h1>
+        <p style="color: rgba(255,255,255,0.8); line-height: 1.85; font-size: 0.95rem; font-weight: 300;">
+          دسترسی به دوره‌های تخصصی استانداردهای حسابداری، تحلیلگری مالی و جامعه پژوهشگران.
+        </p>
+      </div>
+
+      <p style="position: relative; z-index: 10; font-size: 0.75rem; color: rgba(255,255,255,0.45); font-family: 'Plus Jakarta Sans', sans-serif;">
+        © 2026 M. Asnaei Amiri Academy
+      </p>
+    </section>
+
+    <!-- سمت چپ: فرم ورود / ثبت‌نام -->
+    <section class="auth-content">
+      <div class="auth-card">
+       
+        <!-- عنوان فرم -->
+        <div style="margin-bottom: 1.5rem;">
+          <p id="eyebrow" class="auth-eyebrow">خوش آمدید</p>
+          <h2 id="title" class="auth-main-title">ورود به حساب کاربری</h2>
+          <p id="subtitle" class="auth-subtitle">برای دسترسی به پنل و دوره‌ها وارد شوید.</p>
         </div>
 
-        <div class="left-section">
-            <img src="11.jpg" alt="Portrait">
-        </div>
-    </div>
+        <!-- باکس پیام خطا/موفقیت -->
+        <div id="authAlert" class="auth-alert"></div>
 
+        <!-- تب‌های ورود / ثبت‌نام -->
+        <div class="auth-tabs">
+          <button id="loginTab" class="auth-tab-btn active" type="button">ورود</button>
+          <button id="signupTab" class="auth-tab-btn" type="button">ثبت‌نام</button>
+        </div>
+
+        <!-- فرم احراز هویت -->
+        <form id="authForm" style="display: flex; flex-direction: column; gap: 1.1rem;">
+          <div id="nameGroup" style="display: none;">
+            <label id="nameLabel" class="auth-label">نام و نام خانوادگی</label>
+            <input type="text" id="nameField" class="auth-input" placeholder="مثال: زهرا درزیان">
+          </div>
+
+          <div>
+            <label id="emailLabel" class="auth-label">ایمیل</label>
+            <input type="email" id="emailField" required class="auth-input" placeholder="you@example.com">
+          </div>
+
+          <div>
+            <label id="passwordLabel" class="auth-label">رمز عبور</label>
+            <input type="password" id="passwordField" required class="auth-input" placeholder="حداقل ۶ کاراکتر">
+          </div>
+
+          <div id="forgot" style="text-align: left;">
+            <a href="#" class="auth-forgot-link">رمز عبور را فراموش کرده‌اید؟</a>
+          </div>
+
+          <button type="submit" id="submitButton" class="auth-submit-btn">ورود به پنل</button>
+        </form>
+
+        <p id="switchText" class="auth-switch-text">
+          حساب کاربری ندارید؟ <button id="switchButton" class="auth-switch-btn" type="button">ثبت‌نام کنید</button>
+        </p>
+
+        <div class="auth-footer-link">
+          <a href="index.html" id="homeLink" class="auth-back-home">
+            <i class="fa-solid fa-arrow-right"></i> بازگشت به صفحه اصلی
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    let signup = false;
+
+    const alertBox = $('authAlert');
+    function showAlert(msg, isSuccess = false) {
+      alertBox.className = `auth-alert ${isSuccess ? 'success' : 'error'}`;
+      alertBox.innerHTML = `<i class="fa-solid ${isSuccess ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i> ${msg}`;
+      alertBox.style.display = 'flex';
+    }
+    function hideAlert() {
+      alertBox.style.display = 'none';
+    }
+
+    function render() {
+      hideAlert();
+      $('title').textContent = signup ? 'ساخت حساب کاربری' : 'ورود به حساب کاربری';
+      $('subtitle').textContent = signup ? 'در چند ثانیه حساب خود را بسازید و شروع کنید.' : 'برای دسترسی به پنل و دوره‌ها وارد شوید.';
+      $('nameGroup').style.display = signup ? 'block' : 'none';
+      $('nameField').required = signup;
+      $('forgot').style.display = signup ? 'none' : 'block';
+      $('submitButton').textContent = signup ? 'ثبت‌نام در آکادمی' : 'ورود به پنل';
+
+      $('switchText').innerHTML = signup 
+        ? 'قبلاً ثبت‌نام کرده‌اید؟ ' 
+        : 'حساب کاربری ندارید؟ ';
+
+      let b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'auth-switch-btn';
+      b.textContent = signup ? 'وارد شوید' : 'ثبت‌نام کنید';
+      b.onclick = () => { signup = !signup; render(); };
+      $('switchText').appendChild(b);
+
+      $('loginTab').classList.toggle('active', !signup);
+      $('signupTab').classList.toggle('active', signup);
+    }
+
+    $('loginTab').onclick = () => { signup = false; render(); };
+    $('signupTab').onclick = () => { signup = true; render(); };
+
+    // عملیات ثبت‌نام و لاگین کاربر
+    $('authForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      hideAlert();
+
+      const email = $('emailField').value.trim().toLowerCase();
+      const password = $('passwordField').value;
+      const name = $('nameField').value.trim();
+
+      // دیتابیس لوکال
+      let users = JSON.parse(localStorage.getItem('academy_users') || '[]');
+
+      if (signup) {
+        // ۱. بررسی اعتبار فرم ثبت‌نام
+        if (!name) {
+          showAlert('لطفاً نام و نام خانوادگی خود را وارد کنید.');
+          return;
+        }
+        if (password.length < 6) {
+          showAlert('رمز عبور باید حداقل ۶ کاراکتر باشد.');
+          return;
+        }
+
+        const existingUser = users.find(u => u.email === email);
+        if (existingUser) {
+          showAlert('این ایمیل قبلاً ثبت‌نام شده است. لطفاً وارد شوید.');
+          return;
+        }
+
+        // ذخیره کاربر جدید
+        const newUser = { id: Date.now(), name, email, password, joinedAt: new Date().toISOString() };
+        users.push(newUser);
+        localStorage.setItem('academy_users', JSON.stringify(users));
+        localStorage.setItem('academy_currentUser', JSON.stringify(newUser));
+
+        showAlert('ثبت‌نام با موفقیت انجام شد! در حال انتقال...', true);
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1200);
+
+      } else {
+        // ۲. فرآیند ورود
+        const user = users.find(u => u.email === email && u.password === password);
+        if (user) {
+          localStorage.setItem('academy_currentUser', JSON.stringify(user));
+          showAlert(`خوش آمدید ${user.name}! در حال انتقال به پنل...`, true);
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1200);
+        } else {
+          showAlert('ایمیل یا رمز عبور وارد شده نادرست است.');
+        }
+      }
+    });
+
+    render();
+  </script>
 </body>
 </html>
