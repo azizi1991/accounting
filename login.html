@@ -1,161 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ورود و ثبت‌نام | آکادمی دکتر اثنی‌عشری امیری</title>
-  
-  <!-- فونت‌های جذاب وزیرمتن و Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <!-- لود آیکون‌های FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  <!-- آیکون‌ها و استایل اصلی -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+        body {
+            background-color: #edebea;
+            font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* بخش سمت چپ: تصویر پرتره */
+        .left-section {
+            flex: 1;
+            height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+
+        .left-section img {
+            max-height: 95vh;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: left bottom;
+            display: block;
+        }
+
+        /* بخش سمت راست: لوگو، دکمه ورود و شبکه‌های اجتماعی */
+        .right-section {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 25px;
+        }
+
+        .logo-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-box img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* استایل دکمه ورود */
+        .login-btn {
+            background: #e0e0e0;
+            color: #555;
+            text-decoration: none;
+            padding: 10px 48px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 3px 3px 6px #bebebe,
+                        -3px -3px 6px #ffffff;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .login-btn:hover {
+            box-shadow: inset 2px 2px 4px #bebebe,
+                        inset -2px -2px 4px #ffffff;
+            color: #222;
+        }
+
+        /* ردیف آیکون‌های شبکه‌های اجتماعی */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-card {
+            width: 36px;
+            height: 36px;
+            background: #e6e6e6;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            box-shadow: 2px 2px 4px #c8c8c8,
+                        -2px -2px 4px #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .social-card:hover {
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px #b5b5b5,
+                        -3px -3px 6px #ffffff;
+        }
+
+        /* واکنش‌گرایی برای صفحات موبایل و تبلت */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+                justify-content: center;
+                gap: 30px;
+                padding: 40px 15px;
+            }
+
+            .left-section {
+                height: auto;
+                justify-content: center;
+            }
+
+            .left-section img {
+                max-height: 45vh;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <main class="auth-page">
-    
-    <!-- سمت راست: بنر تصویر و معرفی آکادمی -->
-    <section class="auth-hero">
-      <div class="auth-hero-bg"></div>
-      <div class="auth-hero-overlay"></div>
-
-      <div style="position: relative; z-index: 10;">
-      <div class="auth-card-header">
-          <div class="auth-logo-box">
-            <img src="11.jpg" alt="لوگو دکتر اثنی عشری" class="auth-top-avatar" onerror="this.src='poster1.png'">
-            <div class="auth-logo-text">
-              <span class="title">آکادمی تخصصی دکتر اثنی عشری</span>
-              <p style="margin-top: 0.4rem; color: rgba(255,255,255,0.75); font-size: 0.9rem; font-weight: 300;">پژوهش، یادگیری، پیشرفت حرفه‌ای</p>
+    <div class="container">
+        <!-- تصویر سمت چپ -->
+      
+        <div class="right-section">
+            <!-- تصویر / لوگوی خطاطی -->
+            <div class="logo-box">
+                <img src="12.jpg" alt="Logo">
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div style="position: relative; z-index: 10; max-width: 440px;">
-        <p class="auth-category-tag">ACCOUNTING / RESEARCH / PRACTICE</p>
-        <h1 class="auth-hero-title">دانش خود را به یک مزیت حرفه‌ای تبدیل کنید.</h1>
-        <p style="color: rgba(255,255,255,0.8); line-height: 1.85; font-size: 0.95rem; font-weight: 300;">
-          دسترسی به دوره‌های تخصصی استانداردهای حسابداری، تحلیلگری مالی و جامعه پژوهشگران.
-        </p>
-      </div>
+            <!-- دکمه ورود -->
+            <a href="homepage_fa.html" class="login-btn">ورود</a>
 
-      <p style="position: relative; z-index: 10; font-size: 0.75rem; color: rgba(255,255,255,0.45); font-family: 'Plus Jakarta Sans', sans-serif;">
-        © 2026 M. Asnaei Amiri Academy
-      </p>
-    </section>
-
-    <!-- سمت چپ: فرم ورود / ثبت‌نام -->
-    <section class="auth-content">
-      <div class="auth-card">
-       
-        <!-- عنوان فرم -->
-        <div style="margin-bottom: 1.75rem;">
-          <p id="eyebrow" class="auth-eyebrow">خوش آمدید</p>
-          <h2 id="title" class="auth-main-title">ورود به حساب کاربری</h2>
-          <p id="subtitle" class="auth-subtitle">برای دسترسی به پنل و دوره‌ها وارد شوید.</p>
-        </div>
-
-        <!-- تب‌های ورود / ثبت‌نام -->
-        <div class="auth-tabs">
-          <button id="loginTab" class="auth-tab-btn active">ورود</button>
-          <button id="signupTab" class="auth-tab-btn">ثبت‌نام</button>
-        </div>
-
-        <!-- فرم -->
-        <form id="authForm" style="display: flex; flex-direction: column; gap: 1.1rem;">
-          <div id="nameGroup" style="display: none;">
-            <label id="nameLabel" class="auth-label">نام و نام خانوادگی</label>
-            <input type="text" id="nameField" class="auth-input" placeholder="نام شما">
-          </div>
-
-          <div>
-            <label id="emailLabel" class="auth-label">ایمیل</label>
-            <input type="email" required class="auth-input" placeholder="you@example.com">
-          </div>
-
-          <div>
-            <label id="passwordLabel" class="auth-label">رمز عبور</label>
-            <input type="password" required class="auth-input" placeholder="حداقل ۸ کاراکتر">
-          </div>
-
-          <div id="forgot" style="text-align: left;">
-            <a href="#" class="auth-forgot-link">رمز عبور را فراموش کرده‌اید؟</a>
-          </div>
-
-          <button type="submit" id="submitButton" class="auth-submit-btn">ورود به پنل</button>
-        </form>
-
-        <p id="switchText" class="auth-switch-text">
-          حساب کاربری ندارید؟ <button id="switchButton" class="auth-switch-btn">ثبت‌نام کنید</button>
-        </p>
-
-        <div class="auth-footer-link">
-          <a href="index.html" id="homeLink" class="auth-back-home">
-            <i class="fa-solid fa-arrow-right"></i> بازگشت به صفحه اصلی
-          </a>
+            <!-- آیکون‌های سوشال مدیا -->
+            <div class="social-icons">
+                <!-- وب‌سایت / تحلیل -->
+                <a href="https://dr-milad-accounting.ir" target="_blank" class="social-card" title="وبسایت">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </a>
+                <!-- توییتر / X -->
+                <a href="https://x.com/dr_milad_accounting" target="_blank" class="social-card" title="X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <!-- تلگرام -->
+                <a href="https://t.me/dr_milad_accounting" target="_blank" class="social-card" title="تلگرام">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <!-- واتساپ -->
+                <a href="https://wa.me/dr_milad_accounting" target="_blank" class="social-card" title="واتساپ">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <!-- اینستاگرام -->
+                <a href="https://instagram.com/dr.milad.accounting" target="_blank" class="social-card" title="اینستاگرام">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- لینکدین -->
+                <a href="https://linkedin.com/in/dr-milad-accounting" target="_blank" class="social-card" title="لینکدین">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
         </div>
 
-      </div>
-    </section>
-  </main>
+        <div class="left-section">
+            <img src="11.jpg" alt="Portrait">
+        </div>
+    </div>
 
-  <script>
-    const $ = id => document.getElementById(id);
-    let fa = true, signup = false;
-
-    function render() {
-      document.documentElement.lang = fa ? 'fa' : 'en';
-      document.documentElement.dir = fa ? 'rtl' : 'ltr';
-
-      $('languageToggle').textContent = fa ? 'EN' : 'FA';
-      $('eyebrow').textContent = fa ? 'خوش آمدید' : 'WELCOME BACK';
-      $('title').textContent = signup 
-        ? (fa ? 'ساخت حساب کاربری' : 'Create your account') 
-        : (fa ? 'ورود به حساب کاربری' : 'Sign in to your account');
-      $('subtitle').textContent = signup 
-        ? (fa ? 'در چند ثانیه حساب خود را بسازید.' : 'Join the learning community in seconds.') 
-        : (fa ? 'برای ادامه یادگیری وارد شوید.' : 'Sign in to continue learning.');
-
-      $('loginTab').textContent = fa ? 'ورود' : 'Sign in';
-      $('signupTab').textContent = fa ? 'ثبت‌نام' : 'Sign up';
-
-      $('nameLabel').textContent = fa ? 'نام و نام خانوادگی' : 'Full name';
-      $('emailLabel').textContent = fa ? 'ایمیل' : 'Email';
-      $('passwordLabel').textContent = fa ? 'رمز عبور' : 'Password';
-      $('nameField').placeholder = fa ? 'نام شما' : 'Your name';
-
-      $('nameGroup').style.display = signup ? 'block' : 'none';
-      $('forgot').style.display = signup ? 'none' : 'block';
-      $('submitButton').textContent = signup ? (fa ? 'ساخت حساب کاربری' : 'Create account') : (fa ? 'ورود به پنل' : 'Sign in');
-
-      $('switchText').innerHTML = signup 
-        ? (fa ? 'قبلاً ثبت‌نام کرده‌اید؟ ' : 'Already have an account? ') 
-        : (fa ? 'حساب کاربری ندارید؟ ' : 'New here? ');
-
-      let b = document.createElement('button');
-      b.id = 'switchButton';
-      b.className = 'auth-switch-btn';
-      b.textContent = signup ? (fa ? 'ورود' : 'Sign in') : (fa ? 'ثبت‌نام کنید' : 'Create one');
-      b.onclick = () => { signup = !signup; render(); };
-      $('switchText').appendChild(b);
-
-      $('homeLink').innerHTML = fa 
-        ? '<i class="fa-solid fa-arrow-right"></i> بازگشت به صفحه اصلی' 
-        : 'Back to homepage <i class="fa-solid fa-arrow-left"></i>';
-
-      $('loginTab').classList.toggle('active', !signup);
-      $('signupTab').classList.toggle('active', signup);
-    }
-
-    $('languageToggle').onclick = () => { fa = !fa; render(); };
-    $('loginTab').onclick = () => { signup = false; render(); };
-    $('signupTab').onclick = () => { signup = true; render(); };
-
-    render();
-  </script>
 </body>
 </html>
