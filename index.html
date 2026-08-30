@@ -1,302 +1,198 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آکادمی دکتر میلاد اثنی عشری</title>
-  
-  <!-- فونت وزیرمتن -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
-  <!-- آیکون‌های FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- استایل اختصاصی قالب -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <!-- لود آیکون‌های FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #edebea;
+            font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* بخش سمت چپ: تصویر پرتره */
+        .left-section {
+            flex: 1;
+            height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+
+        .left-section img {
+            max-height: 95vh;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: left bottom;
+            display: block;
+        }
+
+        /* بخش سمت راست: لوگو، دکمه ورود و شبکه‌های اجتماعی */
+        .right-section {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 25px;
+        }
+
+        .logo-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-box img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* استایل دکمه ورود */
+        .login-btn {
+            background: #e0e0e0;
+            color: #555;
+            text-decoration: none;
+            padding: 10px 48px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 3px 3px 6px #bebebe,
+                        -3px -3px 6px #ffffff;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .login-btn:hover {
+            box-shadow: inset 2px 2px 4px #bebebe,
+                        inset -2px -2px 4px #ffffff;
+            color: #222;
+        }
+
+        /* ردیف آیکون‌های شبکه‌های اجتماعی */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-card {
+            width: 36px;
+            height: 36px;
+            background: #e6e6e6;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            box-shadow: 2px 2px 4px #c8c8c8,
+                        -2px -2px 4px #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .social-card:hover {
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px #b5b5b5,
+                        -3px -3px 6px #ffffff;
+        }
+
+        /* واکنش‌گرایی برای صفحات موبایل و تبلت */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+                justify-content: center;
+                gap: 30px;
+                padding: 40px 15px;
+            }
+
+            .left-section {
+                height: auto;
+                justify-content: center;
+            }
+
+            .left-section img {
+                max-height: 45vh;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ==================== هدر ==================== -->
-  <header class="header-container">
-    <div class="logo-box">
-      <img src="12.jpg" alt="لوگو دکتر میلاد اثنی عشری">
+    <div class="container">
+        <!-- تصویر سمت چپ -->
+      
+        <div class="right-section">
+            <!-- تصویر / لوگوی خطاطی -->
+            <div class="logo-box">
+                <img src="12.jpg" alt="Logo">
+            </div>
+
+            <!-- دکمه ورود -->
+            <a href="homepage_fa.html" class="login-btn">ورود</a>
+
+            <!-- آیکون‌های سوشال مدیا -->
+            <div class="social-icons">
+                <!-- وب‌سایت / تحلیل -->
+                <a href="https://dr-milad-accounting.ir" target="_blank" class="social-card" title="وبسایت">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </a>
+                <!-- توییتر / X -->
+                <a href="https://x.com/dr_milad_accounting" target="_blank" class="social-card" title="X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <!-- تلگرام -->
+                <a href="https://t.me/dr_milad_accounting" target="_blank" class="social-card" title="تلگرام">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <!-- واتساپ -->
+                <a href="https://wa.me/dr_milad_accounting" target="_blank" class="social-card" title="واتساپ">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <!-- اینستاگرام -->
+                <a href="https://instagram.com/dr.milad.accounting" target="_blank" class="social-card" title="اینستاگرام">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- لینکدین -->
+                <a href="https://linkedin.com/in/dr-milad-accounting" target="_blank" class="social-card" title="لینکدین">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="left-section">
+            <img src="11.jpg" alt="Portrait">
+        </div>
     </div>
 
-    <nav class="nav-menu">
-      <div class="nav-wrapper">
-        <button class="nav-item active">
-          <i class="fa-solid fa-house"></i>
-          <span>خانه</span>
-        </button>
-      </div>
-
-      <div class="nav-wrapper" id="userMenuWrapper">
-        <button class="nav-item" id="userBtn" onclick="document.getElementById('about-section').scrollIntoView({behavior: 'smooth'})">
-          <i class="fa-solid fa-user"></i>
-          <span>درباره من</span>
-        </button>
-        <div class="dropdown-menu">
-          <a href="#"><i class="fa-regular fa-id-badge"></i> مشاهده پروفایل</a>
-          <a href="#"><i class="fa-solid fa-gear"></i> تنظیمات کاربری</a>
-          <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> خروج از حساب</a>
-        </div>
-      </div>
-
-      <div class="nav-wrapper">
-        <button class="nav-item" onclick="document.getElementById('academy-courses').scrollIntoView({behavior: 'smooth'})">
-          <i class="fa-solid fa-graduation-cap"></i>
-          <span>دوره‌ها</span>
-        </button>
-      </div>
-
-      <div class="nav-wrapper">
-        <button class="nav-item" onclick="document.getElementById('articles-section').scrollIntoView({behavior: 'smooth'})">
-          <i class="fa-solid fa-file-lines"></i>
-          <span>مقالات</span>
-        </button>
-      </div>
-
-      <div class="nav-wrapper">
-        <button class="nav-item">
-          <i class="fa-solid fa-newspaper"></i>
-          <span>اخبار</span>
-        </button>
-      </div>
-
-      <div class="nav-wrapper">
-        <button
-          class="nav-item"
-          onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})"
-        >
-          <i class="fa-solid fa-phone"></i>
-          <span>تماس با ما</span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- بخش جستجو و دکمه ورود به حساب کاربری -->
-    <div class="header-actions">
-      <div class="search-container">
-        <input type="text" placeholder="جستجو کنید...">
-        <button class="search-btn" type="button">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-
-      <a href="login.html" class="login-btn" title="ورود به حساب کاربری">
-        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-        <span>ورود</span>
-      </a>
-    </div>
-  </header>
-
-  <main class="body-wrapper">
-
-    <!-- کارت نقل‌قول (سمت چپ) -->
-    <aside class="quote-card">
-      <div class="quote-card-body">
-        <h3 class="quote-title">Every choice carries an unseen invoice</h3>
-        <span class="quote-subtitle">انتخاب‌های امروز، صورت‌حساب‌های فردای شما هستند!</span>
-
-        <p class="quote-text">
-          <i class="fa-solid fa-quote-right quote-icon"></i>
-          حسابداری صرفاً ثبت ارقام نیست، بلکه مهندسیِ روایتِ وضعیت اقتصادی سازمان برای پشتیبانی از تصمیم‌گیری‌های استراتژیک مدیران است. در نقطه مقابل، حسابرسی با نگاهی مستقل و انتقادی، اعتبار این گزارش‌ها را تضمین کرده و شکافِ احتمالی میان «تصویر ارائه‌شده» و «واقعیت عملیاتی» را به حداقل می‌رساند. در نهایت، تعالی سازمانی زمانی محقق می‌شود که حسابداریِ دقیق با نظارت مستمرِ حسابرسی ترکیب شود تا زیرساخت «حکمرانی مالی» (Financial Governance) را برای ایجاد اعتماد پایدار میان ذی‌نفعان بنا کند.
-          <i class="fa-solid fa-quote-left quote-icon"></i>
-        </p>
-        <div class="quote-author">
-          <img src="1.jpg" alt="دکتر میلاد اثنی عشری">
-          <span>دکتر میلاد اثنی عشری</span>
-        </div>
-      </div>
-    </aside>
-
-    <!-- پنل دوره‌های آکادمی (سمت راست) -->
-    <section class="academy-panel" id="academy-courses">
-      <div class="panel-header">
-        <h2>دوره‌های آکادمی</h2>
-      </div>
-
-      <div class="panel-content">
-        <!-- بولت‌های اسلایدر -->
-        <div class="slider-bullets" id="sliderBullets">
-          <span class="slider-bullet active" data-index="0"></span>
-          <span class="slider-bullet" data-index="1"></span>
-          <span class="slider-bullet" data-index="2"></span>
-        </div>
-
-        <!-- پوستر دوره -->
-        <div class="course-poster-box">
-          <img id="courseImg" src="poster1.png" alt="پوستر دوره">
-        </div>
-
-        <!-- مشخصات دوره -->
-        <div class="course-details">
-          <span class="course-category">رویدادها</span>
-          <h1 class="course-title" id="courseTitle">دوره جامع استانداردهای بین‌المللی حسابداری</h1>
-          <p class="course-description" id="courseDesc">
-            بررسی جامع و کاربردی جدیدترین استانداردهای حسابداری مالی و گزارشگری با رویکرد ورود به بازار کار حرفه‌ای و ارتقای مهارت‌های تحلیلگری سازمانی توسط آکادمی منتشر شد.
-          </p>
-          <button class="btn-more" type="button">
-            ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==================== سکشن مقالات کرکره‌ای ==================== -->
-  <section class="articles-section" id="articles-section">
-    <div class="panel-header">
-      <h2>مقالات و پژوهش‌ها</h2>
-    </div>
-
-    <div class="shutter-container" id="shutterContainer">
-      <!-- پره‌های کرکره با جاوااسکریپت ساخته می‌شوند -->
-    </div>
-  </section>
-
-  <!-- ==================== سکشن درباره من ==================== -->
-  <section class="about-section" id="about-section">
-    <div class="panel-header">
-      <h2>درباره من</h2>
-    </div>
-
-    <div class="about-card">
-      <div class="about-bg-watermark"></div>
-      <div class="about-content">
-        <div class="about-name-tag">
-          <i class="fa-solid fa-user-tie"></i>
-          <span>دکتر میلاد اثنی عشری | مدرس و پژوهشگر ارشد حسابداری و مدیریت مالی</span>
-        </div>
-        <p class="about-text">
-          دکتر میلاد اثنی عشری، پژوهشگر و مشاور ارشد در حوزه‌های حسابداری مالی، مدیریت ریسک و تحلیلگری بازار سرمایه با سال‌ها تجربه آموزشی است.<br>
-          ایشان با تلفیق دانش آکادمیک و رویکردهای عملی، به تبیین نقش گزارشگری مالی، استانداردهای بین‌المللی و حکمرانی شرکتی در تصمیم‌گیری‌های کلان می‌پردازد.<br>
-          تاکنون چندین مقاله علمی و تخصصی در کنفرانس‌های معتبر ملی و بین‌المللی با محوریت بازدهی سهام، فناوری‌های نوین و سلامت مالی توسط وی ارائه شده است.<br>
-          هدف این آکادمی، توانمندسازی دانشجویان، حسابداران و مدیران برای درک عمیق مهندسی مالی و ورود مقتدرانه به بازارهای رقابتی و حرفه‌ای است.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== فوتر ==================== -->
-  <footer class="site-footer" id="contact-section">
-    <div class="footer-content">
-
-      <!-- معرفی آکادمی -->
-      <div class="footer-brand">
-        <img
-          src="12.jpg"
-          class="footer-logo"
-          alt="لوگوی آکادمی دکتر میلاد اثنی عشری"
-        >
-
-        <div class="footer-brand-text">
-          <h3>آکادمی دکتر میلاد اثنی عشری</h3>
-          <p>
-            بستری تخصصی برای آموزش حسابداری، حسابرسی، مدیریت مالی و تحلیل بازار
-            سرمایه با رویکردی علمی، کاربردی و متناسب با نیازهای حرفه‌ای امروز.
-          </p>
-        </div>
-      </div>
-
-      <!-- دسترسی سریع -->
-      <div class="footer-column">
-        <h4>دسترسی سریع</h4>
-
-        <ul class="footer-links">
-          <li>
-            <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-              <i class="fa-solid fa-house"></i>
-              خانه
-            </a>
-          </li>
-
-          <li>
-            <a href="#about-section">
-              <i class="fa-solid fa-user-tie"></i>
-              درباره من
-            </a>
-          </li>
-
-          <li>
-            <a href="#academy-courses">
-              <i class="fa-solid fa-graduation-cap"></i>
-              دوره‌های آکادمی
-            </a>
-          </li>
-
-          <li>
-            <a href="#articles-section">
-              <i class="fa-solid fa-file-lines"></i>
-              مقالات و پژوهش‌ها
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- راه‌های ارتباطی -->
-      <div class="footer-column">
-        <h4>ارتباط با آکادمی</h4>
-
-        <div class="footer-contact">
-          <a href="tel:+989123456789">
-            <i class="fa-solid fa-phone"></i>
-            ۰۹۱۲ ۳۴۵ ۶۷۸۹
-          </a>
-
-          <a href="mailto:info@example.com">
-            <i class="fa-solid fa-envelope"></i>
-            info@example.com
-          </a>
-
-          <span>
-            <i class="fa-solid fa-location-dot"></i>
-            ایران
-          </span>
-        </div>
-
-        <div class="footer-socials">
-          <a href="#" aria-label="اینستاگرام" title="اینستاگرام">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-
-          <a href="#" aria-label="تلگرام" title="تلگرام">
-            <i class="fa-brands fa-telegram"></i>
-          </a>
-
-          <a href="#" aria-label="لینکدین" title="لینکدین">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-
-          <a href="#" aria-label="واتساپ" title="واتساپ">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <p>
-        © <span id="currentYear"></span>
-        تمامی حقوق این وب‌سایت متعلق به
-        <strong>آکادمی دکتر میلاد اثنی عشری</strong>
-        است.
-      </p>
-
-      <button
-        class="back-to-top"
-        type="button"
-        aria-label="بازگشت به بالای صفحه"
-        title="بازگشت به بالا"
-        onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-      >
-        <i class="fa-solid fa-arrow-up"></i>
-      </button>
-    </div>
-  </footer>
-
-  <!-- اسکریپت جاوااسکریپت -->
-  <script src="main.js"></script>
 </body>
 </html>
