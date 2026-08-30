@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ورود و ثبت‌نام | آکادمی دکتر اثنی‌عشری امیری</title>
+  
+  <!-- فونت‌های جذاب وزیرمتن و Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- آیکون‌ها و استایل اصلی -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="auth-page">
+    
+    <!-- سمت راست: بنر تصویر و معرفی آکادمی -->
+    <section class="auth-hero">
+      <div class="auth-hero-bg"></div>
+      <div class="auth-hero-overlay"></div>
+
+      <div style="position: relative; z-index: 10;">
+      <div class="auth-card-header">
+          <div class="auth-logo-box">
+            <img src="11.jpg" alt="لوگو دکتر اثنی عشری" class="auth-top-avatar" onerror="this.src='poster1.png'">
+            <div class="auth-logo-text">
+              <span class="title">آکادمی تخصصی دکتر اثنی عشری</span>
+              <p style="margin-top: 0.4rem; color: rgba(255,255,255,0.75); font-size: 0.9rem; font-weight: 300;">پژوهش، یادگیری، پیشرفت حرفه‌ای</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position: relative; z-index: 10; max-width: 440px;">
+        <p class="auth-category-tag">ACCOUNTING / RESEARCH / PRACTICE</p>
+        <h1 class="auth-hero-title">دانش خود را به یک مزیت حرفه‌ای تبدیل کنید.</h1>
+        <p style="color: rgba(255,255,255,0.8); line-height: 1.85; font-size: 0.95rem; font-weight: 300;">
+          دسترسی به دوره‌های تخصصی استانداردهای حسابداری، تحلیلگری مالی و جامعه پژوهشگران.
+        </p>
+      </div>
+
+      <p style="position: relative; z-index: 10; font-size: 0.75rem; color: rgba(255,255,255,0.45); font-family: 'Plus Jakarta Sans', sans-serif;">
+        © 2026 M. Asnaei Amiri Academy
+      </p>
+    </section>
+
+    <!-- سمت چپ: فرم ورود / ثبت‌نام -->
+    <section class="auth-content">
+      <div class="auth-card">
+       
+        <!-- عنوان فرم -->
+        <div style="margin-bottom: 1.75rem;">
+          <p id="eyebrow" class="auth-eyebrow">خوش آمدید</p>
+          <h2 id="title" class="auth-main-title">ورود به حساب کاربری</h2>
+          <p id="subtitle" class="auth-subtitle">برای دسترسی به پنل و دوره‌ها وارد شوید.</p>
+        </div>
+
+        <!-- تب‌های ورود / ثبت‌نام -->
+        <div class="auth-tabs">
+          <button id="loginTab" class="auth-tab-btn active">ورود</button>
+          <button id="signupTab" class="auth-tab-btn">ثبت‌نام</button>
+        </div>
+
+        <!-- فرم -->
+        <form id="authForm" style="display: flex; flex-direction: column; gap: 1.1rem;">
+          <div id="nameGroup" style="display: none;">
+            <label id="nameLabel" class="auth-label">نام و نام خانوادگی</label>
+            <input type="text" id="nameField" class="auth-input" placeholder="نام شما">
+          </div>
+
+          <div>
+            <label id="emailLabel" class="auth-label">ایمیل</label>
+            <input type="email" required class="auth-input" placeholder="you@example.com">
+          </div>
+
+          <div>
+            <label id="passwordLabel" class="auth-label">رمز عبور</label>
+            <input type="password" required class="auth-input" placeholder="حداقل ۸ کاراکتر">
+          </div>
+
+          <div id="forgot" style="text-align: left;">
+            <a href="#" class="auth-forgot-link">رمز عبور را فراموش کرده‌اید؟</a>
+          </div>
+
+          <button type="submit" id="submitButton" class="auth-submit-btn">ورود به پنل</button>
+        </form>
+
+        <p id="switchText" class="auth-switch-text">
+          حساب کاربری ندارید؟ <button id="switchButton" class="auth-switch-btn">ثبت‌نام کنید</button>
+        </p>
+
+        <div class="auth-footer-link">
+          <a href="index.html" id="homeLink" class="auth-back-home">
+            <i class="fa-solid fa-arrow-right"></i> بازگشت به صفحه اصلی
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    let fa = true, signup = false;
+
+    function render() {
+      document.documentElement.lang = fa ? 'fa' : 'en';
+      document.documentElement.dir = fa ? 'rtl' : 'ltr';
+
+      $('languageToggle').textContent = fa ? 'EN' : 'FA';
+      $('eyebrow').textContent = fa ? 'خوش آمدید' : 'WELCOME BACK';
+      $('title').textContent = signup 
+        ? (fa ? 'ساخت حساب کاربری' : 'Create your account') 
+        : (fa ? 'ورود به حساب کاربری' : 'Sign in to your account');
+      $('subtitle').textContent = signup 
+        ? (fa ? 'در چند ثانیه حساب خود را بسازید.' : 'Join the learning community in seconds.') 
+        : (fa ? 'برای ادامه یادگیری وارد شوید.' : 'Sign in to continue learning.');
+
+      $('loginTab').textContent = fa ? 'ورود' : 'Sign in';
+      $('signupTab').textContent = fa ? 'ثبت‌نام' : 'Sign up';
+
+      $('nameLabel').textContent = fa ? 'نام و نام خانوادگی' : 'Full name';
+      $('emailLabel').textContent = fa ? 'ایمیل' : 'Email';
+      $('passwordLabel').textContent = fa ? 'رمز عبور' : 'Password';
+      $('nameField').placeholder = fa ? 'نام شما' : 'Your name';
+
+      $('nameGroup').style.display = signup ? 'block' : 'none';
+      $('forgot').style.display = signup ? 'none' : 'block';
+      $('submitButton').textContent = signup ? (fa ? 'ساخت حساب کاربری' : 'Create account') : (fa ? 'ورود به پنل' : 'Sign in');
+
+      $('switchText').innerHTML = signup 
+        ? (fa ? 'قبلاً ثبت‌نام کرده‌اید؟ ' : 'Already have an account? ') 
+        : (fa ? 'حساب کاربری ندارید؟ ' : 'New here? ');
+
+      let b = document.createElement('button');
+      b.id = 'switchButton';
+      b.className = 'auth-switch-btn';
+      b.textContent = signup ? (fa ? 'ورود' : 'Sign in') : (fa ? 'ثبت‌نام کنید' : 'Create one');
+      b.onclick = () => { signup = !signup; render(); };
+      $('switchText').appendChild(b);
+
+      $('homeLink').innerHTML = fa 
+        ? '<i class="fa-solid fa-arrow-right"></i> بازگشت به صفحه اصلی' 
+        : 'Back to homepage <i class="fa-solid fa-arrow-left"></i>';
+
+      $('loginTab').classList.toggle('active', !signup);
+      $('signupTab').classList.toggle('active', signup);
+    }
+
+    $('languageToggle').onclick = () => { fa = !fa; render(); };
+    $('loginTab').onclick = () => { signup = false; render(); };
+    $('signupTab').onclick = () => { signup = true; render(); };
+
+    render();
+  </script>
+</body>
+</html>
